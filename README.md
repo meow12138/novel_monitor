@@ -27,13 +27,28 @@
 
 ## 快速启动
 
-### 方式一：一键启动（Windows）
+### 方式一：一键部署到服务器（阿里云 ECS / Windows）
+
+以管理员身份运行 PowerShell：
+
+```powershell
+git clone https://github.com/meow12138/novel_monitor.git C:\novel_monitor
+cd C:\novel_monitor
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+.\deploy.ps1
+```
+
+或直接双击 `deploy.bat`（需管理员权限）。
+
+部署脚本会自动完成：环境检测 → 依赖安装 → 前端构建 → 注册开机自启 → 启动服务。
+
+### 方式二：本地开发启动
 
 ```bash
 start.bat
 ```
 
-### 方式二：手动启动
+### 方式三：手动启动
 
 **后端**
 ```bash
@@ -42,7 +57,7 @@ pip install -r requirements.txt
 python run.py
 ```
 
-**前端**
+**前端**（开发模式）
 ```bash
 cd web
 npm install
@@ -50,9 +65,15 @@ npm run dev
 ```
 
 ### 访问地址
-- 前端界面: http://localhost:3000
-- 后端 API: http://localhost:8001
-- API 文档: http://localhost:8001/docs
+
+| 场景 | 地址 |
+|------|------|
+| 生产环境（部署后） | http://\<ECS公网IP\>:8001 |
+| 本地开发 - 前端 | http://localhost:3000 |
+| 本地开发 - 后端 | http://localhost:8001 |
+| API 文档 | http://localhost:8001/docs |
+
+> **重要**：部署到阿里云后，需在安全组中放行 TCP 8001 端口。
 
 ## 项目结构
 
