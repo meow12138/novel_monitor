@@ -1,0 +1,127 @@
+:root {
+  --zw-gap: 16px;
+  --zw-header-height: 50px;
+  --zw-sider-width: 220px;
+  --zw-sider-collapsed-width: 64px;
+  --zw-filter-item-width: 180px;
+
+  --zw-text: #323335;
+  --zw-text-secondary: #86909c;
+  --zw-bg: #f0f2f5;
+  --zw-card-bg: #ffffff;
+  --zw-primary: #00bf8a;
+  --zw-primary-bg: #e6f9f3;
+  --zw-border: rgba(0, 0, 0, 0.06);
+  --zw-table-header-bg: rgb(242, 243, 245);
+
+  --el-color-primary: var(--zw-primary);
+  --el-color-success: #00b42a;
+  --el-color-warning: #ff7d00;
+  --el-color-danger: #f53f3f;
+  --el-color-info: #1677ff;
+
+  color-scheme: light;
+  font: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: var(--zw-text);
+  background: var(--zw-bg);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: var(--zw-bg); }
+#app { width: 100%; min-height: 100vh; }
+
+/* Element Plus overrides */
+.el-card { border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); border: none; }
+.el-card__header { padding: var(--zw-gap); border-bottom: none !important; }
+.el-card__body { padding: var(--zw-gap); }
+.el-button { border-radius: 4px; }
+
+.el-table {
+  --el-table-border-color: rgb(242, 243, 245);
+  --el-table-header-bg-color: rgb(242, 243, 245);
+  --el-table-header-text-color: #323335;
+  --el-table-row-hover-bg-color: #f5f7fa;
+  border: none;
+}
+.el-table::before { display: none; }
+.el-table .el-table__inner-wrapper::before { display: none; }
+.el-table th.el-table__cell {
+  background-color: rgb(242, 243, 245) !important;
+  color: #323335;
+  font-weight: 600;
+  font-size: 13px;
+  height: 40px;
+  padding: 0 12px;
+}
+.el-table td.el-table__cell {
+  border-bottom: 1px solid rgb(242, 243, 245);
+  border-right: none;
+  font-size: 13px;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.el-input__wrapper,
+.el-select__wrapper,
+.el-date-editor .el-input__wrapper { border-radius: 4px; }
+
+.el-dialog { border-radius: 8px; }
+.el-dialog__header { padding: 20px 24px 0; margin-right: 0; }
+.el-dialog__title { font-size: 16px; font-weight: 600; }
+.el-dialog__body { padding: 16px 24px; }
+.el-dialog__footer { padding: 0 24px 20px; }
+.el-pagination { justify-content: center; margin-top: 16px; }
+.el-empty { padding: 32px 0; }
+
+/* 数字单元格 */
+.cell-num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* 表格横向滚动容器 */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 筛选栏标准模式 */
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 16px;
+  margin-bottom: 10px;
+}
+.filter-row-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.filter-label {
+  font-size: 13px;
+  color: var(--zw-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 4.5em;
+}
+.filter-row-item .el-select,
+.filter-row-item .el-input,
+.filter-row-item .el-date-editor {
+  flex: 1;
+  min-width: 0;
+}
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: calc(4.5em + 8px);
+}
+@media (max-width: 1200px) { .filter-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .filter-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) {
+  .filter-grid { grid-template-columns: 1fr; }
+  .filter-actions { padding-left: 0; }
+}
